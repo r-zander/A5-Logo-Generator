@@ -1,3 +1,6 @@
 # Project exclude paths
 /dist/
 /node_modules/
+/.idea/
+/A5-Logo-Render.iml
+/workfiles/
