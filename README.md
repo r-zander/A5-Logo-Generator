@@ -1,6 +1,6 @@
 ## See it live
 
-http://a5.rza.io
+http://a5.rza.io/logo
 
 ## What I did
 
