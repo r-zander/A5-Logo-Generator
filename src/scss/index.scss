@@ -1,0 +1,21 @@
+@import "customization";
+@import "~bootstrap/scss/bootstrap";
+@import "bootstrap-fixes";
+
+body {
+  background-image: url('./images/parchment-texture.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: scroll;
+
+  > main {
+    background-color: rgba(246,235,189,0.6);
+    background-clip: content-box;
+  }
+
+  > footer {
+    background-color: rgba(246,235,189,0.6); //fade-out($secondary, 0.4);
+  }
+}
+
+@import "logo-rendering";

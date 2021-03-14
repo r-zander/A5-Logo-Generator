@@ -1,0 +1,14 @@
+{
+  "input": "src/views/*.html",
+  "output": "dist",
+  "plugins": {
+    "posthtml-inline-svg": {
+      "cwd": "./src/images"
+    },
+    "posthtml-modules": {
+      "root": "./src/views",
+      "initial": true
+    },
+    "htmlnano": {}
+  }
+}

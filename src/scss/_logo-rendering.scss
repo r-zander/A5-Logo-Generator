@@ -1,0 +1,75 @@
+$a5-black: #111;
+
+@mixin transparent-checkers {
+  $contrast: rgba(17, 17, 17, 0.2);
+  background-color: transparent;
+  background-image:
+          linear-gradient(45deg, $contrast 25%, transparent 0, transparent 75%,$contrast 0, $contrast),
+          linear-gradient(45deg, $contrast 25%, transparent 0, transparent 75%,$contrast 0, $contrast);
+  background-size: 30px 30px;
+  background-position: 0 0, 45px 45px;
+}
+
+///
+/// LOGO COLOR CLASSES
+/// .a5-foreground-background
+///
+.a5-black-white {
+  background-color: white;
+
+  svg {
+    fill: $a5-black !important;
+  }
+}
+
+.a5-white-black {
+  background-color: $a5-black;
+
+  svg {
+    fill: white !important;
+  }
+}
+
+.a5-white-transparent {
+  //background: none;
+  @include transparent-checkers;
+
+  svg {
+    fill: white !important;
+  }
+
+}
+
+.a5-black-transparent {
+  //background: none;
+  @include transparent-checkers;
+
+  svg {
+    fill: $a5-black !important;
+  }
+}
+
+.a5-red-black {
+  background-color: black;
+
+  svg {
+    fill: #D12927 !important;
+  }
+}
+
+.a5-black-parchment {
+  background-color: rgb(246,235,189);
+
+  svg {
+    fill: $a5-black !important;
+  }
+}
+
+.preview-wrapper {
+  max-width: calc(100vw - 2rem);
+  overflow: auto;
+}
+
+#preview {
+  margin: 0 auto;
+}

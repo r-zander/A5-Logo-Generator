@@ -1,0 +1,24 @@
+.btn-check:checked + .btn-outline-info, .btn-check:active + .btn-outline-info, .btn-outline-info:active, .btn-outline-info.active, .btn-outline-info.dropdown-toggle.show {
+  color: white;
+
+  svg {
+    fill: white;
+  }
+}
+
+.btn-outline-info:hover {
+  color: white;
+
+  svg {
+    fill: white;
+  }
+}
+
+.form-switch > .form-check-input,
+.form-switch > .form-check-label {
+  cursor: pointer;
+}
+
+.mw-50 {
+  max-width: 50% !important;
+}
