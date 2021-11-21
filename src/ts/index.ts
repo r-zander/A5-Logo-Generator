@@ -17,7 +17,8 @@ const variants = [
         return '.a5-logo-level2.a5-logo-large';
     },
     () => '.a5-logo-level3',
-    () => '.a5-logo-level4'
+    () => '.a5-logo-level4',
+    () => '.a5-logo-level5',
 ];
 
 const variantPaddings: {[key: string]: number} = {
@@ -27,6 +28,7 @@ const variantPaddings: {[key: string]: number} = {
     '.a5-logo-level2.a5-logo-large': 0.052,
     '.a5-logo-level3': 0.012,
     '.a5-logo-level4': 0.008,
+    '.a5-logo-level5': 0.0,
 }
 
 const colorSchemes = [
@@ -48,8 +50,9 @@ const definedSizes = [
     /**
      * DISCORD
      * see https://twitter.com/discord/status/824254681681686530
+     * Kind of unclear, 256 seems to be better than 128
      */
-    {size: 128, name: 'Discord-Avatar'},
+    {size: 256, name: 'Discord-Avatar'},
 
     /**
      * DISCOURSE
@@ -81,20 +84,34 @@ const selection = {
     variant: variants[preSelect.variantIndex],
     colorScheme: colorSchemes[preSelect.colorSchemeIndex],
     size: 128,
-    sizeName: null
+    sizeName: null,
+    padding: 0,
 }
 
 const elements = {
     sizeInput: <HTMLInputElement>document.getElementById('sizeInput'),
-    autoNextSettingToggle: <HTMLInputElement>document.getElementById('autoNextSettingToggle')
+    paddingInput: <HTMLInputElement>document.getElementById('paddingInput'),
+    preDefinedPaddingToggle: <HTMLInputElement>document.getElementById('preDefinedPaddingToggle'),
+    autoNextSettingToggle: <HTMLInputElement>document.getElementById('autoNextSettingToggle'),
+    advancedSettingsToggle: <HTMLInputElement>document.getElementById('advancedSettingsToggle')
 }
 
 const minSize = parseInt(elements.sizeInput.min);
 let autoNextSetting = elements.autoNextSettingToggle.checked;
 
-for (const [variant, padding] of Object.entries(variantPaddings)) {
-    (<HTMLElement>document.querySelector('#preview > ' + variant)).style.padding = paddingPercentageToString(padding);
+function adjustPaddingToVariant() {
+    selection.padding = variantPaddings[selection.variant(selection.size)];
+    elements.paddingInput.valueAsNumber = selection.padding * 100;
 }
+
+function resetPreviewPaddings() {
+    for (const [variant, padding] of Object.entries(variantPaddings)) {
+        (<HTMLElement>document.querySelector('#preview > ' + variant)).style.padding = paddingPercentageToString(padding);
+    }
+    adjustPaddingToVariant();
+}
+
+resetPreviewPaddings();
 
 function paddingPercentageToString(number: number): string {
     return (100 * number) + '%';
@@ -128,6 +145,11 @@ function showSection(sectionId: string) {
     collapse.show();
 }
 
+function isSectionShown(sectionId: string):boolean {
+    let collapseElement = <HTMLElement>document.getElementById(sectionId);
+    return collapseElement !== null && collapseElement.classList.contains('show');
+}
+
 function setVariant(variant: (size: number) => (string)) {
     if (selection.variant === variant) {
         return;
@@ -145,6 +167,10 @@ function setVariant(variant: (size: number) => (string)) {
 
     // @ts-ignore
     selection.variant = variant;
+
+    if (elements.preDefinedPaddingToggle.checked) {
+        adjustPaddingToVariant();
+    }
 }
 
 function adjustVariantOnSizeChanged(variant: (size: number) => (string)) {
@@ -221,22 +247,42 @@ function setSize(size: number, triggeredByInput: boolean = false) {
     adjustVariantOnSizeChanged(selection.variant);
 }
 
+function setPadding(padding: number, triggeredByInput: boolean) {
+    if (padding < 0) {
+        padding = 0;
+    }
+
+    document.querySelectorAll('#preview > .a5-logo').forEach((previewElement) => {
+        (<HTMLElement>previewElement).style.padding = paddingPercentageToString(padding);
+    });
+
+    selection.padding = padding;
+    if (!triggeredByInput) {
+        elements.paddingInput.valueAsNumber = padding * 100;
+    }
+}
+
 (<HTMLElement>document.getElementById('pngDownload')).addEventListener('click', () => {
-    savePreview('asPNG');
+    saveImage('asPNG');
 });
 
 (<HTMLElement>document.getElementById('svgDownload')).addEventListener('click', () => {
-    savePreview('asSVG');
+    saveImage('asSVG');
 });
 
-function savePreview(downloadType: string) {
+function saveImage(downloadType: string) {
     let variant = selection.variant(selection.size);
     let svgElement = <SVGSVGElement>document.querySelector('#preview > ' + variant);
     let exportElement = <SVGSVGElement>svgElement.cloneNode(true);
     let parent = <HTMLElement>svgElement.parentElement;
     exportElement.style.backgroundColor = window.getComputedStyle(parent).backgroundColor;
     exportElement.style.fill = window.getComputedStyle(svgElement).fill;
-    let padding = variantPaddings[variant];
+    let padding: number;
+    if (elements.preDefinedPaddingToggle.checked) {
+        padding = variantPaddings[variant];
+    } else {
+        padding = selection.padding;
+    }
     exportElement.style.padding = paddingPercentageToString(padding);
 
     let {width, height} = svgElement.viewBox.baseVal;
@@ -295,8 +341,25 @@ function resetSizeSelection() {
     selection.sizeName = null;
 }
 
+elements.paddingInput.addEventListener('input', () => {
+    setPadding(elements.paddingInput.valueAsNumber / 100.0, true);
+    let inputMatchesPreDefined = Math.abs(selection.padding - variantPaddings[selection.variant(selection.size)]) <= 0.0001;
+    elements.preDefinedPaddingToggle.checked = inputMatchesPreDefined;
+});
+
+elements.preDefinedPaddingToggle.addEventListener('change', () => {
+    if (elements.preDefinedPaddingToggle.checked) {
+        resetPreviewPaddings();
+    }
+});
+
 elements.autoNextSettingToggle.addEventListener('change', () => {
     autoNextSetting = elements.autoNextSettingToggle.checked;
+});
+
+elements.advancedSettingsToggle.addEventListener('change', () => {
+    document.body.classList.toggle('advanced-settings', elements.advancedSettingsToggle.checked);
+    document.body.classList.toggle('simple-settings', !elements.advancedSettingsToggle.checked);
 });
 
 window.addEventListener('load', () => {
@@ -305,7 +368,26 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('keydown', (event) => {
-    if (document.activeElement === elements.sizeInput) {
+    // Do not interfere with default browser behavior
+    if (document.activeElement instanceof HTMLInputElement &&
+        document.activeElement.type === 'number') {
+        return;
+    }
+
+    if (isSectionShown('collapsePadding')){
+        switch (event.code) {
+            case 'ArrowUp':
+                setPadding(selection.padding + parseFloat(elements.paddingInput.step) / 100.0, false);
+                elements.preDefinedPaddingToggle.checked = false;
+                elements.paddingInput.focus();
+                break;
+            case 'ArrowDown':
+                setPadding(selection.padding - parseFloat(elements.paddingInput.step) / 100.0, false);
+                elements.preDefinedPaddingToggle.checked = false;
+                elements.paddingInput.focus();
+                break;
+        }
+
         return;
     }
 

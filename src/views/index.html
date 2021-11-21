@@ -9,7 +9,7 @@
 
     <title>A5 Logo Generator</title>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 simple-settings">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container-fluid">
@@ -30,7 +30,11 @@
     <div class="container-fluid p-3">
         <div class="row">
             <div class="col">
-                <h2 class="display-6">Einstellungen</h2>
+                <h2 class="display-6">
+                    <span class="advanced-setting">Erweiterte</span>
+                    Einstellungen
+                    <span class="advanced-setting">👨‍🔬</span>
+                </h2>
 
                 <div class="accordion" id="settingsAccordion">
                     <div class="accordion-item">
@@ -69,11 +73,31 @@
                                                     </p>
                                                 </label>
 
-                                                <input type="radio" class="btn-check" name="variantRadio" id="variantRadio4" autocomplete="off" value="3">
-                                                <label class="btn btn-outline-info d-flex flex-column" for="variantRadio4">
+                                                <input type="radio" class="btn-check simple-setting" name="variantRadio" id="variantRadio4" autocomplete="off" value="3">
+                                                <label class="btn btn-outline-info d-flex flex-column simple-setting" for="variantRadio4">
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4"></icon>
                                                     <p class="lead mt-auto mb-0 pt-2">
                                                         Level IV
+                                                    </p>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row advanced-setting">
+                                        <div class="col d-grid">
+                                            <div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group">
+                                                <input type="radio" class="btn-check" name="variantRadio" id="variantRadio4advanced" autocomplete="off" value="3">
+                                                <label class="btn btn-outline-info d-flex flex-column" for="variantRadio4advanced">
+                                                    <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4"></icon>
+                                                    <p class="lead mt-auto mb-0 pt-2">
+                                                        Level IV
+                                                    </p>
+                                                </label>
+                                                <input type="radio" class="btn-check" name="variantRadio" id="variantRadio5" autocomplete="off" value="4">
+                                                <label class="btn btn-outline-info d-flex flex-column" for="variantRadio5">
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5"></icon>
+                                                    <p class="lead mt-auto mb-0 pt-2">
+                                                        Level V
                                                     </p>
                                                 </label>
                                             </div>
@@ -85,7 +109,9 @@
                     </div>
                     <div class="accordion-item">
                         <h3 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColorScheme" aria-expanded="false" aria-controls="collapseColorScheme">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseColorScheme"
+                                    aria-expanded="false" aria-controls="collapseColorScheme">
                                 Farbschema
                             </button>
                         </h3>
@@ -101,6 +127,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
 
                                                 <input type="radio" class="btn-check" name="colorRadio" id="colorRadio2" autocomplete="off" value="1">
@@ -109,6 +136,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
 
                                                 <input type="radio" class="btn-check" name="colorRadio" id="colorRadio3" autocomplete="off" value="2">
@@ -117,6 +145,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
 
                                                 <input type="radio" class="btn-check" name="colorRadio" id="colorRadio4" autocomplete="off" value="3">
@@ -125,6 +154,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
                                             </div>
                                         </div>
@@ -138,6 +168,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
                                                 <input type="radio" class="btn-check" name="colorRadio" id="colorRadio6" autocomplete="off" value="5">
                                                 <label class="btn btn-outline-info a5-black-parchment" for="colorRadio6">
@@ -145,6 +176,7 @@
                                                     <icon src="./a5-logo/level2-small.svg" class="a5-logo a5-logo-level2 a5-logo-small"></icon>
                                                     <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none"></icon>
                                                     <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none"></icon>
+                                                    <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none"></icon>
                                                 </label>
                                             </div>
                                         </div>
@@ -216,14 +248,52 @@
                                         <label for="sizeInput" class="col col-form-label" style="line-height: 44px;">Breite & Höhe</label>
                                         <div id="sizeInputHelp" class="form-text">
                                             Mit
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                            </svg>
+                                            <icon src="./icons/key-up.svg" class="inline-icon"></icon>
                                             und
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                            </svg>
+                                            <icon src="./icons/key-down.svg" class="inline-icon"></icon>
                                             kann man leicht verschiedene Größen ausprobieren.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item advanced-setting">
+                        <h3 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePadding" aria-expanded="false" aria-controls="collapsePadding">
+                                Abstand
+                            </button>
+                        </h3>
+                        <div id="collapsePadding" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#settingsAccordion">
+                            <div class="accordion-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="preDefinedPaddingToggle" checked>
+                                                <label class="form-check-label text-muted" for="preDefinedPaddingToggle">
+                                                    Vorgeschlagenen Abstand pro Variante verwenden
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <h4>Eigener Abstand</h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-floating">
+                                                <input type="number" min="0" step="0.1" max="50" class="form-control" id="paddingInput" placeholder="128" aria-describedby="paddingInputHelp">
+                                                <label for="paddingInput">Prozent</label>
+                                            </div>
+                                        </div>
+                                        <label for="paddingInput" class="col col-form-label" style="line-height: 44px;">der Höhe</label>
+                                        <div id="paddingInputHelp" class="form-text">
+                                            Mit
+                                            <icon src="./icons/key-up.svg" class="inline-icon"></icon>
+                                            und
+                                            <icon src="./icons/key-down.svg" class="inline-icon"></icon>
+                                            kann man leicht verschiedene Abstände ausprobieren.
                                         </div>
                                     </div>
                                 </div>
@@ -242,6 +312,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-end mt-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="advancedSettingsToggle">
+                            <label class="form-check-label text-muted" for="advancedSettingsToggle">
+                                Erweiterte Einstellungen
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col">
                 <h2 class="display-6">Vorschau</h2>
@@ -253,6 +333,7 @@
                         <icon src="./a5-logo/level2-large.svg" class="a5-logo a5-logo-level2 a5-logo-large"></icon>
                         <icon src="./a5-logo/level3.svg" class="a5-logo a5-logo-level3 d-none card-img-bottom"></icon>
                         <icon src="./a5-logo/level4.svg" class="a5-logo a5-logo-level4 d-none card-img-bottom"></icon>
+                        <icon src="./a5-logo/level5.svg" class="a5-logo a5-logo-level5 d-none card-img-bottom"></icon>
                     </div>
                 </div>
                 <div class="row">
