@@ -37,7 +37,15 @@ const colorSchemes = [
     'a5-white-transparent',
     'a5-black-transparent',
     'a5-red-black',
-    'a5-black-parchment'
+    'a5-black-parchment',
+    'a5-royal-blue-white',
+    'a5-royal-blue-black',
+    'a5-royal-blue-transparent',
+    'a5-royal-blue-parchment',
+    'a5-forest-green-white',
+    'a5-forest-green-black',
+    'a5-forest-green-transparent',
+    'a5-forest-green-parchment'
 ];
 
 const definedSizes = [

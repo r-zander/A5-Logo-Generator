@@ -87,6 +87,102 @@ $a5-black: #111;
   }
 }
 
+.a5-royal-blue-white {
+  background-color: white;
+
+  svg {
+    fill: #204ac8 !important;
+
+    *[stroke] {
+      stroke: #204ac8 !important;
+    }
+  }
+}
+
+.a5-royal-blue-black {
+  background-color: $a5-black;
+
+  svg {
+    fill: #204ac8 !important;
+
+    *[stroke] {
+      stroke: #204ac8 !important;
+    }
+  }
+}
+
+.a5-royal-blue-transparent {
+   @include transparent-checkers;
+
+  svg {
+    fill: #204ac8 !important;
+
+    *[stroke] {
+      stroke: #204ac8 !important;
+    }
+  }
+}
+
+.a5-royal-blue-parchment {
+  background-color: rgb(246,235,189);
+
+  svg {
+    fill: #204ac8 !important;
+
+    *[stroke] {
+      stroke: #204ac8 !important;
+    }
+  }
+}
+
+.a5-forest-green-white {
+  background-color: white;
+
+  svg {
+    fill: #084408 !important;
+
+    *[stroke] {
+      stroke: #084408 !important;
+    }
+  }
+}
+
+.a5-forest-green-black {
+  background-color: $a5-black;
+
+  svg {
+    fill: #084408 !important;
+
+    *[stroke] {
+      stroke: #084408 !important;
+    }
+  }
+}
+
+.a5-forest-green-transparent {
+   @include transparent-checkers;
+
+  svg {
+    fill: #084408 !important;
+
+    *[stroke] {
+      stroke: #084408 !important;
+    }
+  }
+}
+
+.a5-forest-green-parchment {
+  background-color: rgb(246,235,189);
+
+  svg {
+    fill: #084408 !important;
+
+    *[stroke] {
+      stroke: #084408 !important;
+    }
+  }
+}
+
 .preview-wrapper {
   max-width: calc(100vw - 2rem);
   overflow: auto;
