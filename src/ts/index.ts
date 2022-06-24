@@ -31,6 +31,7 @@ const variantPaddings: {[key: string]: number} = {
     '.a5-logo-level5': 0.0,
 }
 
+// TODO refactor into foreground selection and background selection
 const colorSchemes = [
     'a5-black-white',
     'a5-white-black',
