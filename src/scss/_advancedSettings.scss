@@ -5,3 +5,13 @@
 .advanced-settings .simple-setting {
   display: none !important;
 }
+
+.simple-settings {
+  .accordion-item:not(.advanced-setting):has(+ .accordion-item.advanced-setting) {
+    .accordion-button.collapsed {
+      border-bottom-width: 1px;
+      border-bottom-right-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+  }
+}
