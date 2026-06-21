@@ -33,3 +33,11 @@ Uses https://github.com/exupero/saveSvgAsPng to modify and download the logo SVG
 - Buttongroups in einzelne Buttons aufteilen (wie Avatar Buttons) für bessere Skalierbarkeit
 - Profimode: Warnung + anpassbares Padding + auswählbare Sub-Varianten
 - Unterscheidung: Runde und Quadratische Avatare
+
+## Issues & Solutions
+
+### Issue: CSS and/or JS don't seem to update live
+
+**Solution:** You need to purge them from the Cloudflare CDN.
+
+Cloudflare > Domains > Overview > rza.io > Caching > Configuration > Purge Cache > Custom Purge
