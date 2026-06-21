@@ -26,7 +26,7 @@
     "serve": "browser-sync start --server \"dist\" --files \"dist\"",
     "watch:css": "onchange \"src/scss\" -- npm run build:css",
     "watch:js": "onchange \"src/ts\" -- npm run dev:js",
-    "watch:html": "onchange \"src/views\" -- npm run build:html",
+    "watch:html": "onchange \"src/views\" \"src/images/annotations.svg\" -- npm run build:html",
     "watch:images": "onchange \"src/images\" -- npm run build:images",
 
     "//=== LOW-LEVEL — single tools, run by the steps above ===": "",

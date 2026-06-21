@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
+     class="annotations-overlay">
+  <!-- MAIN rune A -->
+  <g class="annotation" data-variants="0,1,2,3,4">
+    <line class="annotation-line" x1="500" y1="500" x2="700" y2="300"/>
+    <circle class="annotation-target" cx="500" cy="500" r="7"/>
+    <foreignObject x="700" y="268" width="320" height="200">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="annotation-box"><b>A:</b> Eigene Gestaltung</div>
+    </foreignObject>
+  </g>
+
+  <!-- MAIN font 5 -->
+  <g class="annotation" data-variants="0,1,2,3,4">
+    <line class="annotation-line" x1="500" y1="570" x2="360" y2="580"/>
+    <circle class="annotation-target" cx="500" cy="570" r="7"/>
+    <foreignObject x="100" y="550" width="320" height="200">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="annotation-box align-right"><b>5:</b> DM Serif</div>
+    </foreignObject>
+  </g>
+
+  <!-- MOTTO "FINIS CORONAT OPUS" -->
+  <g class="annotation" data-variants="2,3,4">
+    <line class="annotation-line" x1="440" y1="940" x2="270" y2="940"/>
+    <circle class="annotation-target" cx="440" cy="940" r="7"/>
+    <foreignObject x="40" y="912" width="300" height="200">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="annotation-box align-right"><b>Motto:</b> Old Standard TT</div>
+    </foreignObject>
+  </g>
+
+  <!-- ROMAN YEAR "XIX·VII·MMX" -->
+  <g class="annotation" data-variants="2,3,4">
+    <line class="annotation-line" x1="500" y1="995" x2="720" y2="960"/>
+    <circle class="annotation-target" cx="500" cy="995" r="7"/>
+    <foreignObject x="720" y="934" width="300" height="200">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="annotation-box"><b>Jahr:</b> Old Standard TT</div>
+    </foreignObject>
+  </g>
+
+  <!-- monogram LIGATURES -->
+  <g class="annotation" data-variants="3,4">
+    <line class="annotation-line" x1="330" y1="300" x2="120" y2="180"/>
+    <circle class="annotation-target" cx="330" cy="300" r="7"/>
+    <foreignObject x="-40" y="148" width="320" height="200">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="annotation-box align-right"><b>Monogramme:</b> Fette Deutsche Schrift (aka Koch Fraktur)</div>
+    </foreignObject>
+  </g>
+</svg>

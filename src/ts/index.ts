@@ -102,11 +102,14 @@ const elements = {
     paddingInput: <HTMLInputElement>document.getElementById('paddingInput'),
     preDefinedPaddingToggle: <HTMLInputElement>document.getElementById('preDefinedPaddingToggle'),
     autoNextSettingToggle: <HTMLInputElement>document.getElementById('autoNextSettingToggle'),
-    advancedSettingsToggle: <HTMLInputElement>document.getElementById('advancedSettingsToggle')
+    advancedSettingsToggle: <HTMLInputElement>document.getElementById('advancedSettingsToggle'),
+    showFontsToggle: <HTMLInputElement>document.getElementById('showFontsToggle'),
 }
 
 const minSize = parseInt(elements.sizeInput.min);
 let autoNextSetting = elements.autoNextSettingToggle.checked;
+let advancedSettings = elements.advancedSettingsToggle.checked;
+let showFonts = elements.showFontsToggle.checked;
 
 function adjustPaddingToVariant() {
     selection.padding = variantPaddings[selection.variant(selection.size)];
@@ -118,6 +121,7 @@ function resetPreviewPaddings() {
         (<HTMLElement>document.querySelector('#preview > ' + variant)).style.padding = paddingPercentageToString(padding);
     }
     adjustPaddingToVariant();
+    syncOverlayPadding();
 }
 
 resetPreviewPaddings();
@@ -125,6 +129,43 @@ resetPreviewPaddings();
 function paddingPercentageToString(number: number): string {
     return (100 * number) + '%';
 }
+
+function getCurrentVariantIndex(): number {
+    let checked = <HTMLInputElement>document.querySelector('input[name="variantRadio"]:checked');
+    return checked ? parseInt(checked.value) : preSelect.variantIndex;
+}
+
+function syncOverlayPadding() {
+    let overlay = <HTMLElement>document.querySelector('.annotations-overlay');
+    if (overlay) {
+        overlay.style.padding = paddingPercentageToString(selection.padding);
+    }
+}
+
+function updateAdvancedSettingsDisplay() {
+    document.body.classList.toggle('advanced-settings', advancedSettings);
+    document.body.classList.toggle('simple-settings', !advancedSettings);
+}
+
+updateAdvancedSettingsDisplay();
+
+function updateAnnotations() {
+    let overlay = <HTMLElement>document.querySelector('.annotations-overlay');
+    if (overlay === null) {
+        return;
+    }
+    overlay.style.display = showFonts ? '' : 'none';
+    syncOverlayPadding();
+    let currentVariantIndex = getCurrentVariantIndex();
+    overlay.querySelectorAll('.annotation').forEach((group) => {
+        let variants = (group.getAttribute('data-variants') || '').split(',').map(value => value.trim());
+        let visible = showFonts && variants.includes(String(currentVariantIndex));
+        (<HTMLElement>group).style.display = visible ? '' : 'none';
+    });
+}
+
+// The overlay is inlined at build time, so it exists at load — set its initial state.
+updateAnnotations();
 
 document.querySelectorAll('input[name="variantRadio"]').forEach((element) => {
     if (parseInt((<HTMLInputElement>element).value) === preSelect.variantIndex) {
@@ -137,6 +178,7 @@ function onVariantSelect(event: Event) {
     let element: HTMLInputElement = <HTMLInputElement>event.target;
     if (element.checked) {
         setVariant(variants[parseInt(element.value)]);
+        updateAnnotations();
         if (autoNextSetting) {
             showSection('collapseColorScheme');
         }
@@ -269,6 +311,7 @@ function setPadding(padding: number, triggeredByInput: boolean) {
     if (!triggeredByInput) {
         elements.paddingInput.valueAsNumber = padding * 100;
     }
+    syncOverlayPadding();
 }
 
 (<HTMLElement>document.getElementById('pngDownload')).addEventListener('click', () => {
@@ -367,8 +410,13 @@ elements.autoNextSettingToggle.addEventListener('change', () => {
 });
 
 elements.advancedSettingsToggle.addEventListener('change', () => {
-    document.body.classList.toggle('advanced-settings', elements.advancedSettingsToggle.checked);
-    document.body.classList.toggle('simple-settings', !elements.advancedSettingsToggle.checked);
+    advancedSettings = elements.advancedSettingsToggle.checked;
+    updateAdvancedSettingsDisplay();
+});
+
+elements.showFontsToggle.addEventListener('change', () => {
+    showFonts = elements.showFontsToggle.checked;
+    updateAnnotations();
 });
 
 window.addEventListener('load', () => {

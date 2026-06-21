@@ -190,4 +190,58 @@ $a5-black: #111;
 
 #preview {
   margin: 0 auto;
+  position: relative; // anchor for the absolutely-positioned annotation overlay
+}
+
+// Live typography annotations. Positioned/padded to track the visible logo.
+// scoped under #preview so the rules out-rank the per-colour-scheme `svg { … }` rules above.
+#preview .annotations-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;     // let leaders/boxes sit in the logo's margin
+  pointer-events: none;
+
+  // The leader line + target dot are SVG: the !important out-ranks the per-colour-scheme
+  // `svg { fill/stroke !important }` rules above (which would otherwise recolour them).
+  .annotation-line {
+    stroke: $primary !important;
+    stroke-width: 3;
+    fill: none !important;
+  }
+
+  .annotation-target {
+    fill: $primary !important;
+  }
+
+  foreignObject {
+    overflow: visible;
+  }
+
+  // The box is an HTML <div> - immune to the colour-scheme bleed, so plain styling works.
+  .annotation-box {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 12px;
+    background: #fff;
+    border: 2px solid $primary;
+    border-radius: 12px;
+    color: #111;
+    font-family: $font-family-base;
+    font-size: 24px;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+
+    b {
+      margin-inline-end: 0.25em; // label gap (the text space is collapsed by SVGO)
+    }
+
+    &.align-right {
+      position: absolute;
+      right: 0;
+    }
+  }
 }
