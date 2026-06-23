@@ -342,12 +342,16 @@ function saveImage(downloadType: string) {
 
     switch (downloadType) {
         case 'asPNG':
+            // save-svg-as-png multiplies the output canvas by window.devicePixelRatio,
+            // so on a display scaled to e.g. 125% a "4000px" request would yield 5000px.
+            // Divide it back out so the PNG is exactly selection.size px on any display.
+            // (The SVG export below has no canvas, so it is already exact and unchanged.)
             saveSvgAsPng(
                 exportElement,
                 generateExportName('png'),
                 {
                     encoderOptions: 1,
-                    scale: selection.size / width * scaleDown,
+                    scale: selection.size / width * scaleDown / (window.devicePixelRatio || 1),
                     width: width / scaleDown,
                     height: height / scaleDown
                 });
