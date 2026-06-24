@@ -10,6 +10,7 @@
     svg {
       fill: white;
       stroke: white;
+      stroke-width: 0; // Ensure that transparent strokes with accidental widths to not suddenly show up
 
       *[stroke] {
         stroke: white;

@@ -329,6 +329,8 @@ function saveImage(downloadType: string) {
     let parent = <HTMLElement>svgElement.parentElement;
     exportElement.style.backgroundColor = window.getComputedStyle(parent).backgroundColor;
     exportElement.style.fill = window.getComputedStyle(svgElement).fill;
+    exportElement.style.stroke = window.getComputedStyle(svgElement).stroke;
+    exportElement.style.strokeWidth = window.getComputedStyle(svgElement).strokeWidth;
     let padding: number;
     if (elements.preDefinedPaddingToggle.checked) {
         padding = variantPaddings[variant];
@@ -345,7 +347,6 @@ function saveImage(downloadType: string) {
             // save-svg-as-png multiplies the output canvas by window.devicePixelRatio,
             // so on a display scaled to e.g. 125% a "4000px" request would yield 5000px.
             // Divide it back out so the PNG is exactly selection.size px on any display.
-            // (The SVG export below has no canvas, so it is already exact and unchanged.)
             saveSvgAsPng(
                 exportElement,
                 generateExportName('png'),
